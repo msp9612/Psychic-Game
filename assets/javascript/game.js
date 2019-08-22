@@ -1,19 +1,52 @@
-/*
-// Joan of Arc "properties."
-var joanOfArcInfoParts = ["Real Name", "Grew Up Where", "Known For", "Scars", "Symbolism"];
+var wins = 0;
+var losses = 0;
 
-// Values for Joan's "properties."
-var joanOfArcInfoValues = [
-  "Jehanne la Pucelle.",
-  "Domremy, a village in northeastern France.",
-  "Peasant girl, daughter of a farmer, who rose to become Commander of the French army.",
-  "Took an arrow to the shoulder and a crossbow bolt to the thigh while trying to liberate Paris.",
-  "Stands for French unity and nationalism."
-];
+const guessesMax = 9;
+var guessesLeft = guessesMax;
 
-var input = "Real Name";
+var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var targetLetter = letters[Math.floor(Math.random() * letters.length)];
+// console.log("Target: " + targetLetter);
 
-// How do I use input to get "Jehanne la Pucelle."
-var index = joanOfArcInfoParts.indexOf(input);
-var valuesIndex = joanOfArcInfoValues[index];
-*/
+$("#guesses-left").append(" " + guessesLeft);
+
+document.onkeyup = function (event) {
+
+    var input = event.key.toLowerCase();
+
+    for (i = 0; i < letters.length; i++) {
+        if (input === letters[i]) {
+            // Input is a valid letter.
+            if (input === targetLetter) {
+                // The letter matches. Player wins!
+                wins++;
+                resetGame();
+            }
+            else {
+                // The letter doesn't match.
+                guessesLeft--;
+                if (guessesLeft !== 0) {
+                    // Player hasn't lost yet
+                    $("#guesses-left").text("Guesses left: " + guessesLeft);
+                    $("#guesses-so-far").append(" " + input);
+                }
+                else {
+                    // Player loses.
+                    losses++;
+                    resetGame();
+                }
+            }
+        }
+    }
+}
+
+function resetGame() {
+    targetLetter = letters[Math.floor(Math.random() * letters.length)];
+    guessesLeft = guessesMax;
+    guessesSoFar = 0;
+    $("#guesses-left").text("Guesses left: " + guessesLeft);
+    $("#guesses-so-far").text("Your guesses so far:");
+    $("#wins").text("Wins: " + wins);
+    $("#losses").text("Losses: " + losses);
+    console.log("New target: " + targetLetter);
+}

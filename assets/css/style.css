@@ -1,0 +1,9 @@
+#wins {
+    font-weight: bold;
+    color: green;
+}
+
+#losses {
+    font-weight: bold;
+    color: red;
+}

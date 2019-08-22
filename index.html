@@ -7,20 +7,28 @@
     <title>Psychic Game</title>
     <!--<link rel="stylesheet" href="assets/css/reset.css">-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
 </head>
+
 
 <body>
 
     <h1>The Psychic Game</h1>
-    <h3>Guess what letter I'm thinking of!</h3>
     <img src="assets/images/psychic-image.png" width="15%" height="15%" alt="psychic-image">
+    <h3>Guess what letter I'm thinking of!</h3>
 
-    <script type="text/javascript" src="assets/javascript/game.js">
+    <div id="guesses-left">Guesses left:</div>
+    <div id="guesses-so-far">Your guesses so far:</div>
+    <br>
+    <div id="wins">Wins: 0</div>
+    <div id="losses">Losses: 0</div>
 
-
-
-    </script>
+    <script src="assets/javascript/game.js"></script>
 
 </body>
+
 
 </html>
