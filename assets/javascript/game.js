@@ -48,5 +48,5 @@ function resetGame() {
     $("#guesses-so-far").text("Your guesses so far:");
     $("#wins").text("Wins: " + wins);
     $("#losses").text("Losses: " + losses);
-    console.log("New target: " + targetLetter);
+    // console.log("New target: " + targetLetter);
 }
